@@ -3,6 +3,9 @@ import type { CourseData } from "@/types/course"
 import Header from "@/components/Header"
 import HeroSection from "@/components/HeroSection"
 import CourseContent from "@/components/CourseContent"
+import Footer from "@/components/Footer"
+import ScrollToTop from "@/components/ScrollToTop"
+import PageLoader from "@/components/PageLoader"
 
 async function getCourseData(): Promise<CourseData> {
   const response = await fetch(
@@ -44,12 +47,17 @@ export default async function CoursePage() {
   const courseData = await getCourseData()
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-      <Header />
-      <main className="container mx-auto px-4 py-8">
-        <HeroSection courseData={courseData} />
-        <CourseContent courseData={courseData} />
-      </main>
-    </div>
+    <>
+      <PageLoader />
+      <div className="min-h-screen bg-white">
+        <Header />
+        <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+          <HeroSection courseData={courseData} />
+          <CourseContent courseData={courseData} />
+        </main>
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </>
   )
 }

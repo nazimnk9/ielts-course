@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Star, Play, ChevronLeft, ChevronRight, Quote, Award, TrendingUp } from "lucide-react"
+import { Star, Play, ChevronLeft, ChevronRight, Quote, Award, BarChart3, Users } from "lucide-react"
 import type { Testimonial } from "@/types/course"
 
 interface TestimonialsSectionProps {
@@ -56,35 +56,35 @@ export default function TestimonialsSection({ title, testimonials }: Testimonial
     <section className="relative overflow-hidden animate-in slide-in-from-bottom-4 duration-700">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gray-50/50 pointer-events-none" />
-      <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100/30 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-40 h-40 bg-green-100/30 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute top-20 left-10 w-32 h-32 bg-red-100/30 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-gray-100/30 rounded-full blur-3xl animate-pulse delay-1000" />
 
       <div className="relative z-10">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-blue-100 px-4 py-2 rounded-full mb-4">
-            <Award className="w-5 h-5 text-blue-600" />
-            <span className="text-sm font-medium text-blue-800">Success Stories</span>
+          <div className="inline-flex items-center gap-2 bg-red-100 px-4 py-2 rounded-full mb-4">
+            <Users className="w-5 h-5 text-[#eb2026]" />
+            <span className="text-sm font-medium text-[#eb2026]">Success Stories</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">{title}</h2>
+          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-[#231f20] mb-4">{title}</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Hear from our successful students who achieved their dream IELTS scores
           </p>
-          <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full mt-6"></div>
+          <div className="w-24 h-1 bg-[#eb2026] mx-auto rounded-full mt-6"></div>
         </div>
 
         {/* Stats Bar */}
         <div className="flex justify-center mb-12">
           <div className="grid grid-cols-3 gap-8 bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-200">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600 mb-1">33,007+</div>
+              <div className="text-2xl font-bold text-[#eb2026] mb-1">33,007+</div>
               <div className="text-sm text-gray-600">Students Enrolled</div>
             </div>
             <div className="text-center border-x border-gray-200">
-              <div className="text-2xl font-bold text-green-600 mb-1">7.5+</div>
+              <div className="text-2xl font-bold text-[#231f20] mb-1">7.5+</div>
               <div className="text-sm text-gray-600">Average Score</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-purple-600 mb-1">95%</div>
+              <div className="text-2xl font-bold text-gray-600 mb-1">95%</div>
               <div className="text-sm text-gray-600">Success Rate</div>
             </div>
           </div>
@@ -119,8 +119,8 @@ export default function TestimonialsSection({ title, testimonials }: Testimonial
 
                       {/* Score Badge */}
                       {currentScore && (
-                        <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg animate-in slide-in-from-left-2 duration-500">
-                          <TrendingUp className="w-4 h-4 inline mr-1" />
+                        <div className="absolute top-4 left-4 bg-[#eb2026] text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg animate-in slide-in-from-left-2 duration-500">
+                          <BarChart3 className="w-4 h-4 inline mr-1" />
                           IELTS {currentScore}
                         </div>
                       )}
@@ -135,8 +135,8 @@ export default function TestimonialsSection({ title, testimonials }: Testimonial
                       )}
 
                       {/* Floating Elements */}
-                      <div className="absolute top-1/2 left-4 w-2 h-2 bg-blue-400 rounded-full animate-bounce delay-300" />
-                      <div className="absolute top-1/3 right-6 w-3 h-3 bg-green-400 rounded-full animate-bounce delay-700" />
+                      <div className="absolute top-1/2 left-4 w-2 h-2 bg-red-400 rounded-full animate-bounce delay-300" />
+                      <div className="absolute top-1/3 right-6 w-3 h-3 bg-gray-400 rounded-full animate-bounce delay-700" />
                     </div>
                   )}
                 </div>
@@ -144,7 +144,7 @@ export default function TestimonialsSection({ title, testimonials }: Testimonial
                 {/* Content Side */}
                 <div className="p-8 lg:p-12 flex flex-col justify-center relative">
                   {/* Quote Icon */}
-                  <Quote className="w-12 h-12 text-blue-200 mb-6 animate-in slide-in-from-top-2 duration-500" />
+                  <Quote className="w-12 h-12 text-red-200 mb-6 animate-in slide-in-from-top-2 duration-500" />
 
                   <div className="space-y-6">
                     {/* Stars */}
@@ -172,20 +172,20 @@ export default function TestimonialsSection({ title, testimonials }: Testimonial
                           alt={currentTestimonial.name}
                           className="w-14 h-14 rounded-full object-cover border-3 border-white shadow-lg"
                         />
-                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#eb2026] rounded-full border-2 border-white flex items-center justify-center">
                           <Award className="w-3 h-3 text-white" />
                         </div>
                       </div>
                       <div>
-                        <div className="font-bold text-lg text-gray-900">{currentTestimonial.name}</div>
-                        <div className="text-blue-600 font-semibold">{currentTestimonial.description}</div>
+                        <div className="font-bold text-lg text-[#231f20]">{currentTestimonial.name}</div>
+                        <div className="text-[#eb2026] font-semibold">{currentTestimonial.description}</div>
                       </div>
                     </div>
                   </div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute top-4 right-4 w-20 h-20 bg-blue-100 rounded-full opacity-50 animate-pulse" />
-                  <div className="absolute bottom-4 right-8 w-12 h-12 bg-green-100 rounded-full opacity-30 animate-pulse delay-1000" />
+                  <div className="absolute top-4 right-4 w-20 h-20 bg-red-100 rounded-full opacity-50 animate-pulse" />
+                  <div className="absolute bottom-4 right-8 w-12 h-12 bg-gray-100 rounded-full opacity-30 animate-pulse delay-1000" />
                 </div>
               </div>
             </CardContent>
@@ -208,7 +208,7 @@ export default function TestimonialsSection({ title, testimonials }: Testimonial
               <button
                 key={index}
                 className={`transition-all duration-300 rounded-full ${
-                  index === currentIndex ? "w-8 h-3 bg-blue-600" : "w-3 h-3 bg-gray-300 hover:bg-gray-400"
+                  index === currentIndex ? "w-8 h-3 bg-[#eb2026]" : "w-3 h-3 bg-gray-300 hover:bg-gray-400"
                 }`}
                 onClick={() => goToTestimonial(index)}
               />
@@ -241,11 +241,11 @@ export default function TestimonialsSection({ title, testimonials }: Testimonial
                     <img
                       src={testimonial.profile_image || "/placeholder.svg"}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 group-hover:border-blue-300 transition-colors"
+                      className="w-12 h-12 rounded-full object-cover border-2 border-gray-200 group-hover:border-red-300 transition-colors"
                     />
                     <div>
-                      <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                      {score && <div className="text-sm text-green-600 font-medium">IELTS {score}</div>}
+                      <div className="font-semibold text-[#231f20]">{testimonial.name}</div>
+                      {score && <div className="text-sm text-[#eb2026] font-medium">IELTS {score}</div>}
                     </div>
                   </div>
 
@@ -272,7 +272,7 @@ export default function TestimonialsSection({ title, testimonials }: Testimonial
             onClick={() => setIsAutoPlaying(!isAutoPlaying)}
             className={`text-sm px-4 py-2 rounded-full transition-all duration-300 ${
               isAutoPlaying
-                ? "bg-blue-100 text-blue-700 hover:bg-blue-200"
+                ? "bg-red-100 text-[#eb2026] hover:bg-red-200"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
             }`}
           >

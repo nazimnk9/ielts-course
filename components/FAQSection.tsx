@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { ChevronDown, ChevronUp } from "lucide-react"
+import { ChevronDown, ChevronUp, HelpCircle } from "lucide-react"
 import type { FAQ } from "@/types/course"
 
 interface FAQSectionProps {
@@ -26,39 +26,61 @@ export default function FAQSection({ title, faqs }: FAQSectionProps) {
   return (
     <section className="animate-in slide-in-from-bottom-4 duration-700">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">{title}</h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-green-600 mx-auto rounded-full"></div>
+        <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full mb-4">
+          <HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#eb2026]" />
+          <span className="text-xs sm:text-sm font-medium text-[#eb2026]">Support</span>
+        </div>
+        <h2 className="text-3xl lg:text-4xl font-bold text-[#231f20] mb-4">{title}</h2>
+        <div className="w-16 sm:w-24 h-1 bg-[#eb2026] mx-auto rounded-full mt-4 sm:mt-6"></div>
       </div>
 
       <div className="max-w-3xl mx-auto space-y-4">
-        {faqs.map((faq, index) => (
-          <Card
-            key={faq.id}
-            className="animate-in slide-in-from-bottom-4 duration-700"
-            style={{ animationDelay: `${index * 100}ms` }}
-          >
-            <CardContent className="p-0">
-              <button
-                className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                onClick={() => toggleItem(faq.id)}
-              >
-                <span className="font-semibold text-gray-900 pr-4">{faq.question}</span>
-                {openItems.has(faq.id) ? (
-                  <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
-                )}
-              </button>
+  {faqs.map((faq, index) => {
+    const isOpen = openItems.has(faq.id);
 
-              {openItems.has(faq.id) && (
-                <div className="px-6 pb-6 animate-in slide-in-from-top-2 duration-300">
-                  <div className="prose max-w-none text-gray-600" dangerouslySetInnerHTML={{ __html: faq.answer }} />
-                </div>
-              )}
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+    return (
+      <Card
+        key={faq.id}
+        className="animate-in slide-in-from-bottom-4 duration-700 border-0 bg-white/95 backdrop-blur-sm shadow-lg"
+        style={{ animationDelay: `${index * 100}ms` }}
+      >
+        <CardContent className="p-0">
+          <button
+            onClick={() => toggleItem(faq.id)}
+            className={`w-full p-6 text-left flex items-center justify-between transition-colors ${
+              isOpen
+                ? "bg-[#eb2026] hover:bg-[#c91c21]"
+                : "hover:bg-gray-50"
+            }`}
+          >
+            <span
+              className={`font-semibold pr-4 ${
+                isOpen ? "text-white" : "text-[#231f20]"
+              }`}
+            >
+              {faq.question}
+            </span>
+
+            {isOpen ? (
+              <ChevronUp className="w-5 h-5 text-white flex-shrink-0" />
+            ) : (
+              <ChevronDown className="w-5 h-5 text-[#eb2026] flex-shrink-0" />
+            )}
+          </button>
+
+          {isOpen && (
+            <div className="px-6 pb-6 animate-in slide-in-from-top-2 duration-300">
+              <div
+                className="prose max-w-none text-gray-100"
+                dangerouslySetInnerHTML={{ __html: faq.answer }}
+              />
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    );
+  })}
+</div>
     </section>
   )
 }

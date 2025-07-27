@@ -16,25 +16,35 @@ export default function CourseContent({ courseData }: CourseContentProps) {
   const sortedSections = courseData.sections.sort((a, b) => a.order_idx - b.order_idx)
 
   return (
-    <div className="space-y-16 mt-16">
-      {sortedSections.map((section) => {
-        switch (section.type) {
-          case "features":
-            return <FeaturesSection key={section.type} title={section.name} features={section.values} />
-          case "pointers":
-            return <PointersSection key={section.type} title={section.name} pointers={section.values} />
-          case "about":
-            return <AboutSection key={section.type} title={section.name} aboutItems={section.values} />
-          case "feature_explanations":
-            return <FeatureExplanationsSection key={section.type} title={section.name} features={section.values} />
-          case "testimonials":
-            return <TestimonialsSection key={section.type} title={section.name} testimonials={section.values} />
-          case "faq":
-            return <FAQSection key={section.type} title={section.name} faqs={section.values} />
-          default:
-            return null
-        }
-      })}
+    <div className="lg:grid lg:grid-cols-4 lg:gap-8">
+      {/* Main Content - Takes 3 columns on desktop */}
+      <div className="lg:col-span-3" data-main-content>
+        <div className="space-y-16 mt-16">
+          {sortedSections.map((section) => {
+            switch (section.type) {
+              case "features":
+                return <FeaturesSection key={section.type} title={section.name} features={section.values} />
+              case "pointers":
+                return <PointersSection key={section.type} title={section.name} pointers={section.values} />
+              case "about":
+                return <AboutSection key={section.type} title={section.name} aboutItems={section.values} />
+              case "feature_explanations":
+                return <FeatureExplanationsSection key={section.type} title={section.name} features={section.values} />
+              case "testimonials":
+                return <TestimonialsSection key={section.type} title={section.name} testimonials={section.values} />
+              case "faq":
+                return <FAQSection key={section.type} title={section.name} faqs={section.values} />
+              default:
+                return null
+            }
+          })}
+        </div>
+      </div>
+
+      {/* Right Sidebar - Takes 1 column on desktop, hidden on mobile/tablet */}
+      <div className="hidden lg:block lg:col-span-1">
+        {/* This space is reserved for the sticky enrollment section */}
+      </div>
     </div>
   )
 }

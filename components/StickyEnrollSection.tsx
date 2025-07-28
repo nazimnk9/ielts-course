@@ -37,13 +37,15 @@ export default function StickyEnrollSection({ checklist, ctaText }: StickyEnroll
         const footerRect = footer.getBoundingClientRect()
 
         // Show in right side when main content is visible OR when footer is visible
+        // Only for desktop (1024px and above)
         shouldShowInRightSide =
-          (mainContentRect.top < windowHeight && mainContentRect.bottom > 200) ||
-          (footerRect.top < windowHeight && footerRect.bottom > 0)
+          ((mainContentRect.top < windowHeight && mainContentRect.bottom > 200) ||
+            (footerRect.top < windowHeight && footerRect.bottom > 0)) &&
+          window.innerWidth >= 1024
       }
 
       setIsVisible(shouldShow)
-      setShowInRightSide(shouldShowInRightSide && window.innerWidth >= 1024) // Only on desktop/tablet
+      setShowInRightSide(shouldShowInRightSide)
     }
 
     // Set initial state
@@ -65,7 +67,7 @@ export default function StickyEnrollSection({ checklist, ctaText }: StickyEnroll
     return (
       <div
         className={`fixed z-50 animate-in slide-in-from-right-4 duration-500 ${
-          showInRightSide ? "top-1/2 right-4 -translate-y-1/2" : "bottom-4 right-4"
+          showInRightSide ? "top-1/2 right-4 -translate-y-1/2" : "bottom-20 right-4" // Always above arrow for mobile/tablet
         }`}
       >
         <Button
@@ -83,7 +85,7 @@ export default function StickyEnrollSection({ checklist, ctaText }: StickyEnroll
   return (
     <div
       className={`fixed z-50 animate-in slide-in-from-right-4 duration-500 ${
-        showInRightSide ? "top-1/2 right-4 -translate-y-1/2 w-80" : "bottom-20 right-4 w-80 sm:w-96"
+        showInRightSide ? "top-1/2 right-4 -translate-y-1/2 w-80" : "bottom-20 right-4 w-80 sm:w-96" // Always above arrow for mobile/tablet
       }`}
     >
       <Card className="bg-white border border-gray-200 shadow-2xl overflow-hidden">
